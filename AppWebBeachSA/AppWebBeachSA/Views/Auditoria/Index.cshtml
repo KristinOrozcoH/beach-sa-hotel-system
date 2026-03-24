@@ -1,0 +1,95 @@
+﻿@model IEnumerable<AppWebBeachSA.Models.Auditoria>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Auditoría</h1>
+
+<form class="d-flex" asp-action="BuscarPorUsuario" method="get">
+    <input class="form-control me-2" type="search" name="pUsuario" placeholder="Buscar auditoría..." aria-label="Buscar">
+    <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Usuario</th>
+            <th>Fecha</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdAuditoria</td>
+                <td>@item.Usuario</td>
+                <td>@item.Fecha</td>
+                <td>@item.Accion</td>
+            </tr>
+        }
+    </tbody>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAuditoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TablaAfectada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Accion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdRegistro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdAuditoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rol)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TablaAfectada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Accion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdRegistro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

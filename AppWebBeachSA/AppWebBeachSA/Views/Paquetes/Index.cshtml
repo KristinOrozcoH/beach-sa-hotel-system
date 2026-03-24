@@ -1,0 +1,114 @@
+﻿@model IEnumerable<AppWebBeachSA.Models.Paquete>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista de Paquetes</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear paquete</a>
+</p>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdPaquete)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombrePaquete)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Destino)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaInicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaFin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrecioPorNoche)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PorcentajePrima)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Mensualidades)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdPaquete)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombrePaquete)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Destino)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaFin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrecioPorNoche)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PorcentajePrima)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mensualidades)
+                    </td>
+
+                    @{
+                        string IDModal = "L" + item.IdPaquete;
+                    }
+
+                    <td style="white-space: nowrap;">
+                        <div class="btn-group btn-group-sm" role="group">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IdPaquete }, new { @class = "btn btn-secondary" })
+                            @Html.ActionLink("Details", "Details", new { id = item.IdPaquete }, new { @class = "btn btn-info" })
+                            <!--Button del trigger-->
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#@IDModal">
+                                Delete
+                            </button>
+                        </div>
+                    </td>
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id=@IDModal tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Confirmar acción</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Desea eliminar el libro @item.NombrePaquete ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <form asp-controller="Paquetes" asp-action="Delete" asp-route-id=@item.IdPaquete>
+                                        <input type="submit" value="delete" class="btn btn-danger" />
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

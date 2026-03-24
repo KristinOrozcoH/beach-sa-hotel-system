@@ -1,0 +1,6 @@
+@Beach.SA_WebApi_HostAddress = http://localhost:5202
+
+GET {{Beach.SA_WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

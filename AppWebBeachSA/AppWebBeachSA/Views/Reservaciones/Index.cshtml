@@ -1,0 +1,114 @@
+﻿@model IEnumerable<AppWebBeachSA.Models.Reservacion>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdReservacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPaquete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadNoches)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMetodoPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prima)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mensualidades)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descuento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Impuestos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MontoTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoCambio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorColones)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorDolares)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PDFEnviado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdReservacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPaquete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadNoches)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMetodoPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prima)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mensualidades)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descuento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Impuestos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MontoTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoCambio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorColones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorDolares)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PDFEnviado)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
